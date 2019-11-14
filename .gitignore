@@ -1,0 +1,32 @@
+.*
+!.gitignore
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.tlog
+*.log
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.sbr
+*.idb
+*.obj
+*.map
+*.pdb
+*.ncb
+DuiLib.suo
+*.pch
+*.bsc
+*.user
+*.dep
+*.map
+*.iobj
+*.ipdb
+*.res
