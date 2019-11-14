@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="422,275" sizebox="4,4,4,4" caption="0,0,0,30" mininfo="422,275" maxinfo="422,275" roundcorner="5,5">
+    <Font name="宋体" size="13" bold="false" italic="false" />
+    <Font name="宋体" size="12" bold="false" italic="false" />
+    <VerticalLayout enabled="true" width="420" height="287" bkimage="file=&apos;bg.png&apos; corner=&apos;3,40,3,3&apos; fade=&apos;219&apos; hole=&apos;true&apos;" bkcolor="#FFF0F4F5">
+        <Label text="用户名" float="true" pos="79,86,0,0" enabled="true" width="40" height="30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+        <Edit name="username" bordersize="1" float="true" pos="135,86,0,0" enabled="true" width="202" height="26" bkcolor="#FFFFFFFF" bordercolor="#00808080" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+        <Label text="密  码" float="true" pos="79,133,0,0" enabled="true" width="45" height="30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+        <Edit name="password" bordersize="1" float="true" pos="135,136,0,0" enabled="true" width="201" height="26" bkcolor="#FFFFFFFF" bordercolor="#00808080" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" password="true" />
+        <Button name="login" text="登录" bordersize="1" float="true" pos="148,190,0,0" enabled="true" width="60" height="30" bkcolor="#FFC0DCC0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
+        <Button name="register" text="注册" bordersize="1" float="true" pos="262,189,0,0" enabled="true" width="60" height="30" bkcolor="#FFC0DCC0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
+        <HorizontalLayout enabled="true" height="33" inset="0,2,0,0">
+            <VerticalLayout enabled="true">
+                <Text text="系统登录" float="true" pos="0,0,0,0" enabled="true" width="112" height="31" textpadding="20,10,2,0" textcolor="#00FFFFFF" disabledtextcolor="#FFA7A6AA" font="1" align="wrap" />
+            </VerticalLayout>
+            <VerticalLayout enabled="true" width="70">
+                <Button name="minbtn" float="true" pos="0,0,0,0" enabled="true" width="28" height="17" maxheight="17" maxwidth="28" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;max_min.png&apos; source=&apos;0,0,28,17&apos;" hotimage="file=&apos;max_min_h.png&apos; source=&apos;0,0,28,17&apos;" pushedimage="file=&apos;max_min_h.png&apos; source=&apos;0,0,28,17&apos;" />
+                <Button name="closebtn" float="true" pos="28,0,0,0" enabled="true" width="28" height="17" maxheight="17" maxwidth="28" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;max_min.png&apos; source=&apos;28,0,56,17&apos;" hotimage="file=&apos;max_min_h.png&apos; source=&apos;28,0,56,17&apos;" pushedimage="file=&apos;max_min_h.png&apos; source=&apos;28,0,56,17&apos;" />
+            </VerticalLayout>
+        </HorizontalLayout>
+    </VerticalLayout>
+</Window>

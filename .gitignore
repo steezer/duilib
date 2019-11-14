@@ -14,6 +14,8 @@
 # Compiled Static libraries
 *.lai
 *.la
+*.ilk
+*.aps
 *.a
 *.sbr
 *.idb

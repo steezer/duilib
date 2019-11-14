@@ -57,7 +57,7 @@ public:
         RECT rcWnd = { 0 };
         ::GetWindowRect(m_hWnd, &rcWnd);
 
-        BLENDFUNCTION bf = { AC_SRC_OVER, 0, 255, AC_SRC_ALPHA };
+        BLENDFUNCTION bf = { AC_SRC_OVER, 0, 100, AC_SRC_ALPHA };
         POINT ptPos   = { rcWnd.left, rcWnd.top };
         SIZE sizeWnd  = { dwWidth, dwHeight };
         POINT ptSrc   = { 0, 0 };
