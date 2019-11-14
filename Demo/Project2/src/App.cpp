@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "App.h"
+#include <iostream>
 
 #ifndef _DWMAPI_H_
 typedef struct DWM_BLURBEHIND
@@ -367,15 +368,19 @@ public:
         if( pSilder ) pSilder->OnNotify += MakeDelegate(this, &CFrameWindowWnd::OnLChanged);
     }
 
+	// 内部消息处理
     void Notify(TNotifyUI& msg)
     {
         if( msg.sType == _T("windowinit") ) OnPrepare();
         else if( msg.sType == _T("click") ) {
-            if( msg.pSender->GetName() == _T("insertimagebtn") ) {
+			DUITRACE(msg.pSender->GetName());
+            if( msg.pSender->GetName() == _T("testClick") ) {
                 CRichEditUI* pRich = static_cast<CRichEditUI*>(m_pm.FindControl(_T("testrichedit")));
-                if( pRich ) {
-                    pRich->RemoveAll();
-                }
+				CRichEditUI* pRich2 = static_cast<CRichEditUI*>(m_pm.FindControl(_T("testrichedit1")));
+				CDuiString str=pRich->GetText();
+				MessageBox(NULL, str, _T("提示"), MB_ICONQUESTION);
+				LPCSTR strp=str.GetData();
+				pRich2->SetText(str);
             }
             else if( msg.pSender->GetName() == _T("changeskinbtn") ) {
                 //if( CPaintManagerUI::GetResourcePath() == CPaintManagerUI::GetInstancePath() )
@@ -383,10 +388,19 @@ public:
                 //else
                 //    CPaintManagerUI::SetResourcePath(CPaintManagerUI::GetInstancePath());
                 //CPaintManagerUI::ReloadSkin();
-            }
-        }
+			}
+		}
+		else if (msg.sType== DUI_MSGTYPE_VALUECHANGED) {
+			DUITRACE(msg.pSender->GetName());
+			if (msg.pSender->GetName() == _T("testrichedit")) {
+				CRichEditUI* pRich1 = static_cast<CRichEditUI*>(m_pm.FindControl(_T("testrichedit")));
+				CRichEditUI* pRich2 = static_cast<CRichEditUI*>(m_pm.FindControl(_T("testrichedit1")));
+				pRich2->SetText(pRich1->GetText());
+			}
+		}
     }
 
+	// 消息处理
     LRESULT HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam)
     {
         if( uMsg == WM_CREATE ) {
@@ -434,7 +448,7 @@ public:
     CWndShadow* m_pWndShadow;
 };
 
-
+// 入口函数
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*lpCmdLine*/, int nCmdShow)
 {
     CPaintManagerUI::SetInstance(hInstance);
@@ -447,7 +461,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPSTR /*l
 
     CFrameWindowWnd* pFrame = new CFrameWindowWnd();
     if( pFrame == NULL ) return 0;
-    pFrame->Create(NULL, _T("这是一个最简单的测试用exe，修改test1.xml就可以看到效果"), UI_WNDSTYLE_FRAME|WS_CLIPCHILDREN, WS_EX_WINDOWEDGE);
+    pFrame->Create(NULL, _T("这是一个最简单的测试用exe"), UI_WNDSTYLE_FRAME|WS_CLIPCHILDREN, WS_EX_WINDOWEDGE);
     pFrame->CenterWindow();
     pFrame->ShowWindow(true);
     CPaintManagerUI::MessageLoop();
