@@ -72,36 +72,38 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>F:\Duilib\SDK\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Duilib\SDK\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>F:\Duilib\Basic\curl\Win32\include;F:\Duilib\SDK\include;F:\Duilib\Basic\utils\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\Duilib\Basic\curl\Win32\lib;F:\Duilib\SDK\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>F:\Duilib\SDK\include;$(IncludePath)</IncludePath>
+    <IncludePath>F:\Duilib\Basic\curl\Win32\include;F:\Duilib\SDK\include;F:\Duilib\Basic\utils\include;$(IncludePath)</IncludePath>
     <LibraryWPath>$(LibraryWPath)</LibraryWPath>
-    <LibraryPath>F:\Duilib\SDK\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>F:\Duilib\Basic\curl\Win32\lib;F:\Duilib\SDK\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;UILIB_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;UILIB_STATIC;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <StringPooling>true</StringPooling>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>DuiLib_Static_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>F:\Duilib\SDK\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Winhttp.lib;libcurl.lib;DuiLib_Static_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>F:\Duilib\Basic\curl\Win32\lib;F:\Duilib\SDK\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -120,13 +122,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level1</WarningLevel>
       <Optimization>MinSpace</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;UILIB_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;UILIB_STATIC;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -136,8 +138,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>F:\Duilib\SDK\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>DuiLib_Static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>F:\Duilib\Basic\curl\Win32\lib;F:\Duilib\SDK\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Winhttp.lib;libcurl.lib;DuiLib_Static.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -159,12 +161,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\curl.h" />
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\curlbuild.h" />
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\curlrules.h" />
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\curlver.h" />
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\easy.h" />
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\mprintf.h" />
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\multi.h" />
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\stdcheaders.h" />
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\system.h" />
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\typecheck-gcc.h" />
+    <ClInclude Include="..\..\Basic\utils\include\Base.h" />
+    <ClInclude Include="..\..\Basic\utils\include\HttpClient.h" />
+    <ClInclude Include="..\..\Basic\utils\include\HttpReportRequest.h" />
+    <ClInclude Include="..\..\Basic\utils\include\HttpServer.h" />
+    <ClInclude Include="..\..\Basic\utils\include\json-forwards.h" />
+    <ClInclude Include="..\..\Basic\utils\include\json.h" />
+    <ClInclude Include="..\..\Basic\utils\include\TaskQueue.h" />
     <ClInclude Include="app.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Basic\utils\src\HttpClient.cpp" />
+    <ClCompile Include="..\..\Basic\utils\src\HttpReportRequest.cpp" />
+    <ClCompile Include="..\..\Basic\utils\src\HttpServer.cpp" />
+    <ClCompile Include="..\..\Basic\utils\src\jsoncpp.cpp" />
+    <ClCompile Include="..\..\Basic\utils\src\TaskQueue.cpp" />
     <ClCompile Include="app.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\utils">
+      <UniqueIdentifier>{b416912a-1d58-4fc6-b378-8355bad777e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\utils">
+      <UniqueIdentifier>{91d87ab0-4f28-4850-9110-37cb425208e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\curl">
+      <UniqueIdentifier>{715a766f-62da-437f-be92-b09222c25287}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -27,6 +36,57 @@
     <ClInclude Include="app.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Basic\utils\include\Base.h">
+      <Filter>头文件\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Basic\utils\include\HttpClient.h">
+      <Filter>头文件\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Basic\utils\include\HttpReportRequest.h">
+      <Filter>头文件\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Basic\utils\include\HttpServer.h">
+      <Filter>头文件\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Basic\utils\include\json.h">
+      <Filter>头文件\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Basic\utils\include\json-forwards.h">
+      <Filter>头文件\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Basic\utils\include\TaskQueue.h">
+      <Filter>头文件\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\curl.h">
+      <Filter>头文件\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\curlbuild.h">
+      <Filter>头文件\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\curlrules.h">
+      <Filter>头文件\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\curlver.h">
+      <Filter>头文件\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\easy.h">
+      <Filter>头文件\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\mprintf.h">
+      <Filter>头文件\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\multi.h">
+      <Filter>头文件\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\stdcheaders.h">
+      <Filter>头文件\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\system.h">
+      <Filter>头文件\curl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Basic\curl\Win32\include\curl\typecheck-gcc.h">
+      <Filter>头文件\curl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -34,6 +94,21 @@
     </ClCompile>
     <ClCompile Include="app.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Basic\utils\src\HttpClient.cpp">
+      <Filter>源文件\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Basic\utils\src\HttpReportRequest.cpp">
+      <Filter>源文件\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Basic\utils\src\HttpServer.cpp">
+      <Filter>源文件\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Basic\utils\src\jsoncpp.cpp">
+      <Filter>源文件\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Basic\utils\src\TaskQueue.cpp">
+      <Filter>源文件\utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
