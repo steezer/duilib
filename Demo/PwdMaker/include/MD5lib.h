@@ -16,6 +16,9 @@ documentation and/or software.
 /* The following makes MD default to MD5 if it has not already been
   defined with C compiler flags.
  */
+#ifndef INC_MD5LIB_H
+#define INC_MD5LIB_H
+
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
@@ -502,3 +505,5 @@ int  main(argc,argv){
 }
 
 */
+
+#endif

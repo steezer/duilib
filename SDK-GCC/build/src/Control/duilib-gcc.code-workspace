@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "/www/store/win32/duilib/SDK-GCC"
+		}
+    ],
+    "settings": {
+        "files.associations": {
+            "*.htm": "sciter-html",
+            "*.js": "javascript",
+            "queue": "cpp",
+            "stack": "cpp"
+        }
+    }
+}

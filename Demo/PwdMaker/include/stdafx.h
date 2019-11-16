@@ -3,7 +3,8 @@
 // 项目特定的包含文件
 //
 
-#pragma once
+#ifndef INC_STDAFX_H
+#define INC_STDAFX_H
 
 #include "targetver.h"
 
@@ -18,4 +19,5 @@
 #include <tchar.h>
 
 
+#endif
 // 在此处引用程序需要的其他标头
