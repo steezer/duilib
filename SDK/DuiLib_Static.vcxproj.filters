@@ -183,9 +183,6 @@
     <ClCompile Include="src\Control\UIEdit.cpp">
       <Filter>Source Files\Control</Filter>
     </ClCompile>
-    <ClCompile Include="src\Control\UIFlash.cpp">
-      <Filter>Source Files\Control</Filter>
-    </ClCompile>
     <ClCompile Include="src\Control\UIGifAnim.cpp">
       <Filter>Source Files\Control</Filter>
     </ClCompile>
@@ -214,9 +211,6 @@
       <Filter>Source Files\Control</Filter>
     </ClCompile>
     <ClCompile Include="src\Control\UITreeView.cpp">
-      <Filter>Source Files\Control</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Control\UIWebBrowser.cpp">
       <Filter>Source Files\Control</Filter>
     </ClCompile>
     <ClCompile Include="src\Core\UIBase.cpp">

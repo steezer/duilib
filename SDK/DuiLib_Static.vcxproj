@@ -71,7 +71,6 @@
     <ClCompile Include="src\Control\UICombo.cpp" />
     <ClCompile Include="src\Control\UIDateTime.cpp" />
     <ClCompile Include="src\Control\UIEdit.cpp" />
-    <ClCompile Include="src\Control\UIFlash.cpp" />
     <ClCompile Include="src\Control\UIGifAnim.cpp" />
     <ClCompile Include="src\Control\UILabel.cpp" />
     <ClCompile Include="src\Control\UIList.cpp" />
@@ -82,7 +81,6 @@
     <ClCompile Include="src\Control\UISlider.cpp" />
     <ClCompile Include="src\Control\UIText.cpp" />
     <ClCompile Include="src\Control\UITreeView.cpp" />
-    <ClCompile Include="src\Control\UIWebBrowser.cpp" />
     <ClCompile Include="src\Core\UIBase.cpp" />
     <ClCompile Include="src\Core\UIContainer.cpp" />
     <ClCompile Include="src\Core\UIControl.cpp" />
