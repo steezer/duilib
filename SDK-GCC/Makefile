@@ -48,11 +48,10 @@ $(BUILD_DIR)/%.o:%.c
 
 # 创建目录
 dirs: clean
-	mkdir -p $(TARGET_DIR)\lib
-	mkdir -p $(BUILD_DIR)
-	cp -r src $(BUILD_DIR)
-	find $(BUILD_DIR)/src -name "*.cpp" -o -name "*.c" | xargs rm -f
+	-mkdir -p $(TARGET_DIR)/lib
+	-mkdir -p $(BUILD_DIR)
+	-cp -r src $(BUILD_DIR)
 
 # 清理
 clean:
-	rm -rf $(TARGET_DIR) $(BUILD_DIR)
+	-rm -rf $(TARGET_DIR) $(BUILD_DIR)
