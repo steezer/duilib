@@ -48,9 +48,10 @@ $(BUILD_DIR)/%.o:%.c
 
 # 创建目录
 dirs: clean
-	-mkdir -p $(TARGET_DIR)/lib
-	-mkdir -p $(BUILD_DIR)
-	-cp -r src $(BUILD_DIR)
+	-mkdir -p $(BUILD_DIR)/src/Control \
+		$(BUILD_DIR)/src/Core \
+		$(BUILD_DIR)/src/Layout \
+		$(BUILD_DIR)/src/Utils
 
 # 清理
 clean:
