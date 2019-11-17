@@ -1,16 +1,11 @@
 #ifndef __UILIB__
 #define __UILIB__
 
-#ifdef UILIB_STATIC
-#	define DUILIB_API 
-#else
-#	if defined(UILIB_EXPORTS)
-#		define DUILIB_API // __declspec(dllexport)
-#	else
-#		define DUILIB_API // __declspec(dllimport)
-#	endif
+#ifndef DUILIB_API
+#define DUILIB_API 
 #endif
 
+//#define UILIB_COMDAT __declspec(selectany)
 #define UILIB_COMDAT __declspec(selectany)
 
 #include <windows.h>
@@ -64,6 +59,5 @@
 
 #include "Control/UIActiveX.h"
 #include "Control/UIGifAnim.h"
-//#include "Control/UIFlash.h"
 
 #endif
