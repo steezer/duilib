@@ -1,0 +1,13 @@
+build/src/Core/UIRender.o:UIRender.cpp:(.text+0xa6b3): undefined reference to `_imp__SelectObject@8'
+build/src/Core/UIManager.o:UIManager.cpp:(.text+0x52d): undefined reference to `_imp__GetStockObject@4'
+build/src/Utils/WndShadow.o:WndShadow.cpp:(.text+0x9c2): undefined reference to `_imp__CreateDIBSection@24'
+build/src/Utils/WinImplBase.o:WinImplBase.cpp:(.text+0x80c): undefined reference to `_imp__CreateRoundRectRgn@24'
+build/src/Control/UILabel.o:UILabel.cpp:(.text+0x23c): undefined reference to `GdiplusStartup@12'
+build/src/Control/UIEdit.o:UIEdit.cpp:(.text+0x688): undefined reference to `_imp__DeleteObject@4'
+build/src/Control/UIGifAnim.o:UIGifAnim.cpp:(.text+0x8fe): undefined reference to `FrameDimensionTime'
+build/src/Control/UIDateTime.o:UIDateTime.cpp:(.text+0x39d): undefined reference to `_imp__DeleteObject@4'
+build/src/Control/UIActiveX.o:UIActiveX.cpp:(.text+0x1e9): undefined reference to `IID_IUnknown'
+build/src/Control/UIRichEdit.o:UIRichEdit.cpp:(.text+0xb7): undefined reference to `_imp__GetObjectA@12'
+
+collect2.exe: error: ld returned 1 exit status
+make: *** [Makefile:37: share] Error 1
