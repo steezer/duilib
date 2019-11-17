@@ -3,10 +3,10 @@
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceFolder}/**",
+                "${workspaceFolder}/include/**",
                 "/Users/xiechunping/storage/win32/compiler/mingw/i686-w64-mingw32/include/**"
             ],
-            "defines": [],
+            "defines": ["_WIN32_WINNT=0x0500"],
             "macFrameworkPath": [
                 "/System/Library/Frameworks",
                 "/Library/Frameworks"
