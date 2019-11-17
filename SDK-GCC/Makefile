@@ -9,7 +9,7 @@ DLL_EXT=.dll
 #CFLAGS=-fpermissive -fleading-underscore -DWIN32 -DNDEBUG -D_WINDOWS -DUILIB_STATIC
 CFLAGS=-fpermissive -DWIN32 -DNDEBUG -D_WINDOWS -DUILIB_EXPORTS
 LDFLAGS= 
-LIBS=-L"G:\compiler\mingw\i686-w64-mingw32\lib" -lkernel32 -lwinspool -lcomdlg32 -luser32 -loledlg -lole32 -luuid -lmsimg32 -lgdi32 -lgdiplus -lwinmm -lcomctl32 -limm32 -lshlwapi
+LIBS=-lkernel32 -lwinspool -lcomdlg32 -luser32 -loledlg -lole32 -luuid -lmsimg32 -lgdi32 -lgdiplus -lwinmm -lcomctl32 -limm32 -lshlwapi
 INC_DIR=-I./include
 PREFIX=/usr/local
 INSTALL_DIR=$(PREFIX)/$(PROJECT_NAME)
@@ -48,11 +48,10 @@ $(BUILD_DIR)/%.o:%.c
 
 # 创建目录
 dirs: clean
-	mkdir -p $(TARGET_DIR)\lib
-	mkdir -p $(BUILD_DIR)
-	cp -r src $(BUILD_DIR)
-	find $(BUILD_DIR)/src -name "*.cpp" -o -name "*.c" | xargs rm -f
+	-mkdir -p $(TARGET_DIR)/lib
+	-mkdir -p $(BUILD_DIR)
+	-cp -r src $(BUILD_DIR)
 
 # 清理
 clean:
-	rm -rf $(TARGET_DIR) $(BUILD_DIR)
+	-rm -rf $(TARGET_DIR) $(BUILD_DIR)
