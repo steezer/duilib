@@ -1,6 +1,3 @@
-#ifndef __STB_IMAGE_H__
-#define __STB_IMAGE_H__
-
 #define STBI_NO_STDIO
 #define STBI_NO_WRITE
 #define STBI_NO_HDR
@@ -216,6 +213,8 @@ License:
 
 */
 
+#ifndef STBI_INCLUDE_STB_IMAGE_H
+#define STBI_INCLUDE_STB_IMAGE_H
 
 // DOCUMENTATION
 //
@@ -515,5 +514,7 @@ STBIDEF int   stbi_zlib_decode_noheader_buffer(char *obuffer, int olen, const ch
 }
 #endif
 
-
-#endif
+//
+//
+////   end header file   /////////////////////////////////////////////////////
+#endif // STBI_INCLUDE_STB_IMAGE_H

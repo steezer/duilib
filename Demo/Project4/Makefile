@@ -17,6 +17,8 @@ $(TARGET): $(BUILD)/resource.o app.cpp
 $(BUILD)/resource.o: Project1.rc
 	windres -i $^ -o $@
 
+$(BUILD)/resource.o: Project1.rc
+	windres -i $^ -o $@
 
 .PHONY: clean run
 
