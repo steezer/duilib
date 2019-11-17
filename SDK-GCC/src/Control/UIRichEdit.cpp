@@ -189,7 +189,7 @@ HRESULT InitDefaultCharFormat(CRichEditUI* re, CHARFORMAT2W* pcf, HFONT hfont)
     LOGFONT lf;
     if( !hfont )
         hfont = re->GetManager()->GetFont(re->GetFont());
-    ::GetObject(hfont, sizeof(LOGFONT), &lf);
+    GetObject(hfont, sizeof(LOGFONT), &lf);
 
     DWORD dwColor = re->GetTextColor();
     pcf->cbSize = sizeof(CHARFORMAT2W);
