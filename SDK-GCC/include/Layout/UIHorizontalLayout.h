@@ -1,8 +1,6 @@
 #ifndef __UIHORIZONTALLAYOUT_H__
 #define __UIHORIZONTALLAYOUT_H__
 
-#pragma once
-
 namespace DuiLib
 {
 	class DUILIB_API CHorizontalLayoutUI : public CContainerUI

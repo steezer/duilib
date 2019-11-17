@@ -10,8 +10,6 @@ CDialogBuilder::CDialogBuilder() : m_pCallback(NULL), m_pstrtype(NULL)
 CControlUI* CDialogBuilder::Create(STRINGorID xml, LPCTSTR type, IDialogBuilderCallback* pCallback, 
                                    CPaintManagerUI* pManager, CControlUI* pParent)
 {
-	//��ԴIDΪ0-65535�������ֽڣ��ַ���ָ��Ϊ4���ֽ�
-	//�ַ�����<��ͷ��Ϊ��XML�ַ�����������Ϊ��XML�ļ�
 
     if( HIWORD(xml.m_lpstr) != NULL ) {
         if( *(xml.m_lpstr) == _T('<') ) {
@@ -218,7 +216,7 @@ CControlUI* CDialogBuilder::_Parse(CMarkupNode* pRoot, CControlUI* pParent, CPai
 			for ( int i = 0; i < count; i++ ) {
 				if (!builder.GetMarkup()->IsValid())
 				{
-					if( m_pstrtype != NULL ) { // ʹ����Դdll������Դ�ж�ȡ
+					if( m_pstrtype != NULL ) {
 						WORD id = (WORD)_tcstol(szValue, &pstr, 10); 
 						pControl = builder.Create((UINT)id, m_pstrtype, m_pCallback, pManager, pParent);
 					}
@@ -230,7 +228,7 @@ CControlUI* CDialogBuilder::_Parse(CMarkupNode* pRoot, CControlUI* pParent, CPai
 			}
             continue;
         }
-		//���ؼ�XML����
+        
 		else if( _tcsicmp(pstrClass, _T("TreeNode")) == 0 ) {
 			CTreeNodeUI* pParentNode	= static_cast<CTreeNodeUI*>(pParent->GetInterface(_T("TreeNode")));
 			CTreeNodeUI* pNode			= new CTreeNodeUI();
@@ -241,7 +239,6 @@ CControlUI* CDialogBuilder::_Parse(CMarkupNode* pRoot, CControlUI* pParent, CPai
 				}
 			}
 
-			// ���пؼ�Ĭ�������ȳ�ʼ��Ĭ������
 			if( pManager ) {
 				pNode->SetManager(pManager, NULL, false);
 				LPCTSTR pDefaultAttributes = pManager->GetDefaultAttributeList(pstrClass);
@@ -250,7 +247,6 @@ CControlUI* CDialogBuilder::_Parse(CMarkupNode* pRoot, CControlUI* pParent, CPai
 				}
 			}
 
-			// �����������Բ�����Ĭ������
 			if( node.HasAttributes() ) {
 				TCHAR szValue[500] = { 0 };
 				SIZE_T cchLen = lengthof(szValue) - 1;
@@ -261,7 +257,6 @@ CControlUI* CDialogBuilder::_Parse(CMarkupNode* pRoot, CControlUI* pParent, CPai
 				}
 			}
 
-			//�����ӽڵ㼰���ӿؼ�
 			if(node.HasChildren()){
 				CControlUI* pSubControl = _Parse(&node,pNode,pManager);
 				if(pSubControl && _tcsicmp(pSubControl->GetClass(),_T("TreeNodeUI")) != 0)
@@ -386,7 +381,6 @@ CControlUI* CDialogBuilder::_Parse(CMarkupNode* pRoot, CControlUI* pParent, CPai
         TCHAR szValue[256] = { 0 };
         int cchLen = lengthof(szValue) - 1;
         // Attach to parent
-        // ��ΪĳЩ���Ժ͸�������أ�����selected��������Add��������
 		if( pParent != NULL ) {
             LPCTSTR lpValue = szValue;
             if( node.GetAttributeValue(_T("cover"), szValue, cchLen) && _tcscmp(lpValue, _T("true")) == 0 ) {

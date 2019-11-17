@@ -1,8 +1,6 @@
 #ifndef __UITABLAYOUT_H__
 #define __UITABLAYOUT_H__
 
-#pragma once
-
 namespace DuiLib
 {
 	class DUILIB_API CTabLayoutUI : public CContainerUI

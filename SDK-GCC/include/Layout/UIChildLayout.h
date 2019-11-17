@@ -1,8 +1,6 @@
 #ifndef __UICHILDLAYOUT_H__
 #define __UICHILDLAYOUT_H__
 
-#pragma once
-
 namespace DuiLib
 {
 	class DUILIB_API CChildLayoutUI : public CContainerUI

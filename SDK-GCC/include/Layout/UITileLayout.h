@@ -1,8 +1,6 @@
 #ifndef __UITILELAYOUT_H__
 #define __UITILELAYOUT_H__
 
-#pragma once
-
 namespace DuiLib
 {
 	class DUILIB_API CTileLayoutUI : public CContainerUI

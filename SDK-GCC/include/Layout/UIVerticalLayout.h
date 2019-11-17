@@ -1,8 +1,6 @@
 #ifndef __UIVERTICALLAYOUT_H__
 #define __UIVERTICALLAYOUT_H__
 
-#pragma once
-
 namespace DuiLib
 {
 	class DUILIB_API CVerticalLayoutUI : public CContainerUI

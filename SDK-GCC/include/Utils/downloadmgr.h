@@ -1,3 +1,5 @@
+#ifndef __DOWNLOADMGR_H__
+#define __DOWNLOADMGR_H__
 
 #pragma warning( disable: 4049 )  /* more than 64k source lines */
 
@@ -19,29 +21,26 @@
 
 /* verify that the <rpcndr.h> version is high enough to compile this file*/
 #ifndef __REQUIRED_RPCNDR_H_VERSION__
-#define __REQUIRED_RPCNDR_H_VERSION__ 440
+    #define __REQUIRED_RPCNDR_H_VERSION__ 440
 #endif
 
 #include "rpc.h"
 #include "rpcndr.h"
 
 #ifndef __RPCNDR_H_VERSION__
-#error this stub requires an updated version of <rpcndr.h>
+    #error this stub requires an updated version of <rpcndr.h>
 #endif // __RPCNDR_H_VERSION__
 
 #ifndef COM_NO_WINDOWS_H
-#include "windows.h"
-#include "ole2.h"
+    #include "windows.h"
+    #include "ole2.h"
 #endif /*COM_NO_WINDOWS_H*/
-
-#ifndef __downloadmgr_h__
-#define __downloadmgr_h__
 
 /* Forward Declarations */ 
 
 #ifndef __IDownloadManager_FWD_DEFINED__
-#define __IDownloadManager_FWD_DEFINED__
-typedef interface IDownloadManager IDownloadManager;
+    #define __IDownloadManager_FWD_DEFINED__
+    typedef interface IDownloadManager IDownloadManager;
 #endif 	/* __IDownloadManager_FWD_DEFINED__ */
 
 
@@ -194,7 +193,6 @@ void __RPC_STUB IDownloadManager_Download_Stub(
     DWORD *_pdwStubPhase);
 
 
-
 #endif 	/* __IDownloadManager_INTERFACE_DEFINED__ */
 
 
@@ -206,6 +204,6 @@ void __RPC_STUB IDownloadManager_Download_Stub(
 }
 #endif
 
-#endif
 
+#endif
 

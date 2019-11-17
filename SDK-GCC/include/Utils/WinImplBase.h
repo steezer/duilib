@@ -1,5 +1,5 @@
-#ifndef WIN_IMPL_BASE_HPP
-#define WIN_IMPL_BASE_HPP
+#ifndef __WIN_IMPL_BASE_HPP__
+#define __WIN_IMPL_BASE_HPP__
 
 namespace DuiLib
 {
