@@ -7,10 +7,10 @@ AR=ar -rc
 EXE_EXT=.exe
 DLL_EXT=.dll
 #CFLAGS=-fpermissive -fleading-underscore -DWIN32 -DNDEBUG -D_WINDOWS -DUILIB_STATIC
-CFLAGS= -Os -ffunction-sections -fdata-sections -fno-exceptions -fpermissive -DWIN32 -DNDEBUG -D_WINDOWS -DUILIB_EXPORTS
+CFLAGS= -Os -ffunction-sections -fdata-sections -fno-exceptions -fpermissive -DWIN32 -D_DEBUG -D_WINDOWS -DUILIB_EXPORTS
 LDFLAGS= 
 #LIBS=-lkernel32 -lwinspool -lcomdlg32 -luser32 -loleaut32 -loledlg -lole32 -luuid -lmsimg32 -lgdi32 -lgdiplus -lwinmm -lcomctl32 -limm32 -lshlwapi
-LIBS=-lcomdlg32 -lcomctl32 -luser32 -loleaut32 -loledlg -lole32 -luuid -lmsimg32 -lgdi32 -lgdiplus -lwinmm -limm32 -lshlwapi
+LIBS=-lmsvcr100 -lcomctl32 -lole32 -luuid -lgdiplus -limm32 -lshlwapi
 INC_DIR=-I./include
 PREFIX=/usr/local
 INSTALL_DIR=$(PREFIX)/$(PROJECT_NAME)
@@ -27,7 +27,7 @@ all: rmtarget $(EXE_TARGET)
 
 #编译测试目标文件
 $(EXE_TARGET): app.cpp $(BUILD_DIR)/resource.o $(OBJECTS_CPP) $(OBJECTS_C)
-	$(CC) $(CFLAGS) -Wl,--gc-sections -o $@ $(INC_DIR) -mwindows $^ $(LIBS) "G:\\compiler\\mingw\\i686-w64-mingw32\\lib\\libmsvcr100.a"
+	$(CC) $(CFLAGS) -Wl,--gc-sections -o $@ $(INC_DIR) -mwindows $^ $(LIBS)
 	$(EXE_TARGET)
 	
 $(BUILD_DIR)/resource.o: $(RES_DIR)/Project1.rc
