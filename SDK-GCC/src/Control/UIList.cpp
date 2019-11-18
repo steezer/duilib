@@ -32,6 +32,8 @@ protected:
 //
 //
 
+static CListBodyUI* _this;
+
 CListUI::CListUI() : m_pCallback(NULL), m_bScrollSelect(false), m_iCurSel(-1), m_iExpandedItem(-1)
 {
     m_pList = new CListBodyUI(this);
@@ -1259,7 +1261,8 @@ bool CListBodyUI::SortItems(PULVCompareFunc pfnCompare, UINT_PTR dwData, int &iC
     m_compareData = dwData;
     CControlUI *pCurSelControl = GetItemAt(iCurSel);
     CControlUI **pData = (CControlUI **)m_items.GetData();
-    qsort_s(m_items.GetData(), m_items.GetSize(), sizeof(CControlUI *), CListBodyUI::ItemComareFunc, this);
+    _this=this;
+    qsort(m_items.GetData(), m_items.GetSize(), sizeof(CControlUI *), CListBodyUI::handleSortItem);
     if (pCurSelControl)
         iCurSel = GetItemIndex(pCurSelControl);
     IListItemUI *pItem = NULL;
@@ -1276,7 +1279,9 @@ bool CListBodyUI::SortItems(PULVCompareFunc pfnCompare, UINT_PTR dwData, int &iC
 }
 
 int __cdecl CListBodyUI::handleSortItem(const void *item1, const void *item2){
-    return 0;
+    if (!item1 || !item2)
+        return 0;
+    return _this->ItemComareFunc(item1, item2);
 }
 
 int __cdecl CListBodyUI::ItemComareFunc(void *pvlocale, const void *item1, const void *item2)

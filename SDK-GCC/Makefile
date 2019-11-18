@@ -35,7 +35,7 @@ $(EXE_TARGET): $(BUILD_DIR)/app.o $(BUILD_DIR)/resource.o $(OBJECTS_CPP) $(OBJEC
 	$(EXE_TARGET)
 
 $(BUILD_DIR)/app.o: app.cpp
-	@$(CC) -c -o $@ $(CFLAGS) $(INC_DIR) $<
+	$(CC) -c -o $@ $(CFLAGS) $(INC_DIR) $<
 $(BUILD_DIR)/resource.o: $(RES_DIR)/Project1.rc
 	windres -i $^ -o $@
 
@@ -48,9 +48,9 @@ static:$(OBJECTS_CPP) $(OBJECTS_C)
 
 #编译目标文件
 $(BUILD_DIR)/%.o:%.cpp
-	@$(CC) -c -o $@ $(CFLAGS) $(INC_DIR) $<
+	$(CC) -c -o $@ $(CFLAGS) $(INC_DIR) $<
 $(BUILD_DIR)/%.o:%.c
-	@$(CC) -c -o $@ $(CFLAGS) $(INC_DIR) $<
+	$(CC) -c -o $@ $(CFLAGS) $(INC_DIR) $<
 
 # 创建目录
 dirs: clean
