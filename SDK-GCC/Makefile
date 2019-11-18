@@ -22,20 +22,20 @@ OBJECTS_CPP=$(addprefix $(BUILD_DIR)/,$(strip $(SOURCES_CPP:.cpp=.o)))
 OBJECTS_C=$(addprefix $(BUILD_DIR)/,$(strip $(SOURCES_C:.c=.o)))
 BIN_DIR=bin
 RES_DIR=res
-TARGET=$(BIN)/app.exe
+TARGET=$(BIN_DIR)/app.exe
 
 all: $(TARGET)
 .PHONY: dirs clean
 
 #编译测试目标文件
 $(TARGET): $(BUILD_DIR)/resource.o app.cpp $(OBJECTS_CPP) $(OBJECTS_C)
-	$(CC) $(LIBS) $(CFLAGS) $(INC_DIR) -mwindows $^ -o $@
+	$(CC) $(CFLAGS) $(INC_DIR) -mwindows -o $@ $^ -static $(LIBS)
 $(BUILD_DIR)/resource.o: $(RES_DIR)/Project1.rc
 	windres -i $^ -o $@
 
 # 编译动态库
 share:$(OBJECTS_CPP) $(OBJECTS_C)
-	$(CC) -fPIC -shared -o $(SHARE_TARGET) $(LDFLAGS) $(LIBS) $^
+	$(CC) -fPIC -shared  $(LDFLAGS) -o $(SHARE_TARGET) $^ $(LIBS)
 
 # 编译静态库
 static:$(OBJECTS_CPP) $(OBJECTS_C)
@@ -43,17 +43,19 @@ static:$(OBJECTS_CPP) $(OBJECTS_C)
 
 #编译目标文件
 $(BUILD_DIR)/%.o:%.cpp
-	@$(CC) -c -o $@ $(CFLAGS) $(INC_DIR) $<
+	@$(CC) -c -o $@ $(CFLAGS) -static $(INC_DIR) $<
 $(BUILD_DIR)/%.o:%.c
-	@$(CC) -c -o $@ $(CFLAGS) $(INC_DIR) $<
+	@$(CC) -c -o $@ $(CFLAGS) -static $(INC_DIR) $<
 
 # 创建目录
 dirs: clean
 	-mkdir -p $(BUILD_DIR)/src/Control \
 		$(BUILD_DIR)/src/Core \
 		$(BUILD_DIR)/src/Layout \
-		$(BUILD_DIR)/src/Utils
+		$(BUILD_DIR)/src/Utils \
+		$(BIN_DIR) \
+		$(TARGET_DIR)
 
 # 清理
 clean:
-	-rm -rf $(TARGET_DIR) $(BUILD_DIR)
+	-rm -rf $(TARGET_DIR) $(BUILD_DIR) $(BIN_DIR)
