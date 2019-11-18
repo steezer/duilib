@@ -18,6 +18,7 @@ public:
     bool SortItems(PULVCompareFunc pfnCompare, UINT_PTR dwData, int &iCurSel);
 
 protected:
+    static int __cdecl handleSortItem(const void *item1, const void *item2);
     static int __cdecl ItemComareFunc(void *pvlocale, const void *item1, const void *item2);
     int __cdecl ItemComareFunc(const void *item1, const void *item2);
 
@@ -1272,6 +1273,10 @@ bool CListBodyUI::SortItems(PULVCompareFunc pfnCompare, UINT_PTR dwData, int &iC
     }
 
     return true;
+}
+
+int __cdecl CListBodyUI::handleSortItem(const void *item1, const void *item2){
+    return 0;
 }
 
 int __cdecl CListBodyUI::ItemComareFunc(void *pvlocale, const void *item1, const void *item2)

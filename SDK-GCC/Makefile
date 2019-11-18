@@ -11,9 +11,9 @@ CFLAGS= -Os
 CFLAGS+= -ffunction-sections -fdata-sections 
 CFLAGS+= -fno-exceptions -fpermissive 
 CFLAGS+= -DWIN32 -D_DEBUG -D_WINDOWS -DUILIB_EXPORTS
-LDFLAGS= -Wl,--gc-sections -static
+LDFLAGS= -Wl,--gc-sections
 #LIBS=-lkernel32 -lwinspool -lcomdlg32 -luser32 -loleaut32 -loledlg -lole32 -luuid -lmsimg32 -lgdi32 -lgdiplus -lwinmm -lcomctl32 -limm32 -lshlwapi
-LIBS=-lcomctl32 -lole32 -luuid -lgdiplus -limm32 -lshlwapi -lmsvcr100
+LIBS=-lcomctl32 -lole32 -luuid -lgdiplus -limm32 -lshlwapi
 INC_DIR=-I./include
 PREFIX=/usr/local
 INSTALL_DIR=$(PREFIX)/$(PROJECT_NAME)
@@ -30,7 +30,7 @@ all: rmtarget $(EXE_TARGET)
 
 #编译测试目标文件
 $(EXE_TARGET): $(BUILD_DIR)/app.o $(BUILD_DIR)/resource.o $(OBJECTS_CPP) $(OBJECTS_C)
-	$(CC) $(LDFLAGS) -static-pie -o $@ $(INC_DIR) -mwindows $^ -static $(LIBS)
+	$(CC) $(LDFLAGS) -static-pie -o $@ $(INC_DIR) -mwindows $^ $(LIBS)
 	#strip $(EXE_TARGET)
 	$(EXE_TARGET)
 
