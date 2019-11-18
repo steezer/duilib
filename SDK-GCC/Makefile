@@ -7,45 +7,44 @@ AR=ar -rc
 EXE_EXT=.exe
 DLL_EXT=.dll
 #CFLAGS=-fpermissive -fleading-underscore -DWIN32 -DNDEBUG -D_WINDOWS -DUILIB_STATIC
-CFLAGS=-fpermissive -DWIN32 -DNDEBUG -D_WINDOWS -DUILIB_EXPORTS
+CFLAGS= -Os -ffunction-sections -fdata-sections -fno-exceptions -fpermissive -DWIN32 -DNDEBUG -D_WINDOWS -DUILIB_EXPORTS
 LDFLAGS= 
 #LIBS=-lkernel32 -lwinspool -lcomdlg32 -luser32 -loleaut32 -loledlg -lole32 -luuid -lmsimg32 -lgdi32 -lgdiplus -lwinmm -lcomctl32 -limm32 -lshlwapi
-LIBS=-lwinspool -lcomdlg32 -loleaut32 -loledlg -lole32 -luuid -lmsimg32 -lgdi32 -lgdiplus -lwinmm -lcomctl32 -limm32 -lshlwapi
+LIBS=-lcomdlg32 -lcomctl32 -luser32 -loleaut32 -loledlg -lole32 -luuid -lmsimg32 -lgdi32 -lgdiplus -lwinmm -limm32 -lshlwapi
 INC_DIR=-I./include
 PREFIX=/usr/local
 INSTALL_DIR=$(PREFIX)/$(PROJECT_NAME)
 BUILD_DIR=build
-EXE_TARGET=$(TARGET_DIR)/bin/$(PROJECT_NAME)$(EXE_EXT)
+RES_DIR=res
 SHARE_TARGET=$(TARGET_DIR)/lib/lib$(PROJECT_NAME)$(DLL_EXT)
 STATIC_TARGET=$(TARGET_DIR)/lib/lib$(PROJECT_NAME).a
+EXE_TARGET=$(TARGET_DIR)/bin/app$(EXE_EXT)
 OBJECTS_CPP=$(addprefix $(BUILD_DIR)/,$(strip $(SOURCES_CPP:.cpp=.o)))
 OBJECTS_C=$(addprefix $(BUILD_DIR)/,$(strip $(SOURCES_C:.c=.o)))
-BIN_DIR=bin
-RES_DIR=res
-TARGET=$(BIN_DIR)/app.exe
 
-all: $(TARGET)
-.PHONY: dirs clean
+all: rmtarget $(EXE_TARGET)
+.PHONY: dirs clean rmtarget
 
 #编译测试目标文件
-$(TARGET): $(BUILD_DIR)/resource.o app.cpp $(OBJECTS_CPP) $(OBJECTS_C)
-	$(CC) $(CFLAGS) $(INC_DIR) -mwindows -o $@ $^ -static $(LIBS)
+$(EXE_TARGET): app.cpp $(BUILD_DIR)/resource.o $(OBJECTS_CPP) $(OBJECTS_C)
+	$(CC) $(CFLAGS) -Wl,--gc-sections -o $@ $(INC_DIR) -mwindows $^ $(LIBS) "G:\\compiler\\mingw\\i686-w64-mingw32\\lib\\libmsvcr100.a"
+	$(EXE_TARGET)
+	
 $(BUILD_DIR)/resource.o: $(RES_DIR)/Project1.rc
 	windres -i $^ -o $@
 
 # 编译动态库
 share:$(OBJECTS_CPP) $(OBJECTS_C)
 	$(CC) -fPIC -shared  $(LDFLAGS) -o $(SHARE_TARGET) $^ $(LIBS)
-
 # 编译静态库
 static:$(OBJECTS_CPP) $(OBJECTS_C)
 	@$(AR) $(STATIC_TARGET) $^
 
 #编译目标文件
 $(BUILD_DIR)/%.o:%.cpp
-	@$(CC) -c -o $@ $(CFLAGS) -static $(INC_DIR) $<
+	@$(CC) -c -o $@ $(CFLAGS) $(INC_DIR) $<
 $(BUILD_DIR)/%.o:%.c
-	@$(CC) -c -o $@ $(CFLAGS) -static $(INC_DIR) $<
+	@$(CC) -c -o $@ $(CFLAGS) $(INC_DIR) $<
 
 # 创建目录
 dirs: clean
@@ -53,8 +52,12 @@ dirs: clean
 		$(BUILD_DIR)/src/Core \
 		$(BUILD_DIR)/src/Layout \
 		$(BUILD_DIR)/src/Utils \
-		$(BIN_DIR) \
-		$(TARGET_DIR)
+		$(TARGET_DIR)/bin \
+		$(TARGET_DIR)/lib
+
+# 删除目标文件
+rmtarget:
+	-rm -f $(EXE_TARGET)
 
 # 清理
 clean:
