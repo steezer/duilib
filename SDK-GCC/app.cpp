@@ -12,15 +12,6 @@
 #include <tchar.h>
 
 #include "res/resource.h"
-// #include "HttpClient.h"
-
-#pragma comment (lib, "ws2_32.lib")
-#pragma comment (lib, "winmm.lib")
-#pragma comment (lib, "wldap32.lib")
-#pragma comment (lib, "Shell32.lib")
-#pragma comment (lib, "Shlwapi.lib")
-#pragma comment (lib, "httpapi.lib")
-#pragma comment (lib, "crypt32.lib")
 
 #include <objbase.h>
 #include <zmouse.h>
@@ -131,7 +122,7 @@ public:
 			{
 				CEditUI* username=static_cast<CEditUI*>(m_pm.FindControl(_T("username")));
 				CEditUI* password = static_cast<CEditUI*>(m_pm.FindControl(_T("password")));
-				std::wstring url = L"http://www.h928.com/";
+				std::wstring url = L"http://www.stwms.cn/";
 				std::string res = "";
 				this->Login(url, res);
 				std::string result= UTF8ToAnsi(res);
