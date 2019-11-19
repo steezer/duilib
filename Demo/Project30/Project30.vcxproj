@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>F:\Duilib\Basic\curl\Win32\include;F:\Duilib\SDK\include;F:\Duilib\Basic\utils\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Duilib\Basic\curl\Win32\lib;F:\Duilib\SDK\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>F:\libs\curl-vc\Win32\include;F:\Duilib\SDK\include;F:\libs\utils\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\libs\curl-vc\Win32\lib;F:\Duilib\SDK\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -103,7 +103,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>Winhttp.lib;libcurl.lib;DuiLib_Static_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>F:\Duilib\Basic\curl\Win32\lib;F:\Duilib\SDK\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>F:\libs\curl-vc\Win32\lib;F:\Duilib\SDK\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

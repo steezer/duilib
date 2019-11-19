@@ -1,8 +1,11 @@
 {
 	"folders": [
-		{
-			"path": "/www/store/win32/duilib"
-		}
+        {
+            "path": "/www/store/win32/duilib"
+        },
+        {
+            "path": "/Users/xiechunping/storage/win32/libs"
+        }
     ],
     "settings": {}
 }

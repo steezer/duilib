@@ -4,7 +4,8 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/Users/xiechunping/storage/win32/compiler/mingw/i686-w64-mingw32/include/**"
+                "${workspaceFolder}/../bin/mingw-posix/i686-w64-mingw32/include/**",
+                "${workspaceFolder}/../libs/**"
             ],
             "defines": [],
             "macFrameworkPath": [

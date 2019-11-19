@@ -28,6 +28,8 @@
 #include <vector>
 #include <sstream>
 
+#include <Base.h>
+#include <HttpClient.h>
 #include "UIlib.h"
 
 using namespace DuiLib;
@@ -102,12 +104,12 @@ public:
 
 	}
 
-	// void Login(const std::wstring &url, std::string &res) {
-	// 	std::vector<std::wstring> headers;
-	// 	headers.push_back(L"");
-	// 	HttpClient httpClient(L"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36");
-	// 	httpClient.http_get(url, headers, res);
-	// }
+	void Login(const std::wstring &url, std::string &res) {
+		std::vector<std::wstring> headers;
+		headers.push_back(L"");
+		HttpClient httpClient(L"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36");
+		httpClient.http_get(url, headers, res);
+	}
 
 	void Notify(TNotifyUI& msg)
 	{
@@ -129,14 +131,11 @@ public:
 			{
 				CEditUI* username=static_cast<CEditUI*>(m_pm.FindControl(_T("username")));
 				CEditUI* password = static_cast<CEditUI*>(m_pm.FindControl(_T("password")));
-                
-                //MessageBox(NULL, L(), _T("返回结果"), NULL);
-                
-				// std::wstring url = L"http://www.h928.com/";
-				// std::string res = "";
-				// this->Login(url, res);
-				// std::string result= UTF8ToAnsi(res);
-				// MessageBox(NULL, result.c_str(), _T("返回结果"), NULL);
+				std::wstring url = L"http://www.h928.com/";
+				std::string res = "";
+				this->Login(url, res);
+				std::string result= UTF8ToAnsi(res);
+				MessageBox(NULL, result.c_str(), _T("返回结果"), NULL);
 			}
 			else if (msg.pSender == m_pRegister)
 			{

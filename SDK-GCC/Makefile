@@ -2,6 +2,7 @@ SOURCES_CPP=$(wildcard src/*.cpp src/*/*.cpp)
 SOURCES_C=$(wildcard src/*/*.c)
 PROJECT_NAME=duilib
 TARGET_DIR=release
+LIBS_DIR=../../libs
 CC=g++
 AR=ar -rc
 EXE_EXT=.exe
@@ -10,11 +11,19 @@ DLL_EXT=.dll
 CFLAGS= -Os  
 CFLAGS+= -ffunction-sections -fdata-sections 
 CFLAGS+= -fno-exceptions -fpermissive 
-CFLAGS+= -DWIN32 -D_DEBUG -D_WINDOWS -DUILIB_EXPORTS
+CFLAGS+= -DWIN32 -D_DEBUG -D_WINDOWS -DUILIB_EXPORTS -DCURL_STATICLIB
 LDFLAGS= -Wl,--gc-sections
 #LIBS=-lkernel32 -lwinspool -lcomdlg32 -luser32 -loleaut32 -loledlg -lole32 -luuid -lmsimg32 -lgdi32 -lgdiplus -lwinmm -lcomctl32 -limm32 -lshlwapi
-LIBS=-lcomctl32 -lole32 -luuid -lgdiplus -limm32 -lshlwapi
-INC_DIR=-I./include
+LIBS= -lcomctl32 -lole32 -luuid -lgdiplus -limm32 -lshlwapi 
+LIBS+= -static $(LIBS_DIR)/utils/build/src/HttpClient.o 
+LIBS+= -L$(LIBS_DIR)/curl/lib -lcurl -lwinhttp
+LIBS+= -L$(LIBS_DIR)/brotli/lib -lbrotlidec-static -lbrotlienc-static -lbrotlicommon-static 
+LIBS+= -L$(LIBS_DIR)/nghttp2/lib -lnghttp2
+LIBS+= -L$(LIBS_DIR)/openssl/lib -lssl -lcrypto
+LIBS+= -L$(LIBS_DIR)/libssh2/lib -lssh2
+LIBS+= -L$(LIBS_DIR)/zlib -lz
+LIBS+= -lws2_32 -lcrypt32 -lwldap32 -lnormaliz -lmsvcr100 
+INC_DIR=-I./include -I$(LIBS_DIR)/utils/include -I$(LIBS_DIR)/curl/include
 PREFIX=/usr/local
 INSTALL_DIR=$(PREFIX)/$(PROJECT_NAME)
 BUILD_DIR=build
@@ -29,9 +38,9 @@ all: rmtarget $(EXE_TARGET)
 .PHONY: dirs clean rmtarget
 
 #编译测试目标文件
-$(EXE_TARGET): $(BUILD_DIR)/app.o $(BUILD_DIR)/resource.o $(OBJECTS_CPP) $(OBJECTS_C)
-	$(CC) $(LDFLAGS) -static-pie -o $@ $(INC_DIR) -mwindows $^ $(LIBS)
-	#strip $(EXE_TARGET)
+$(EXE_TARGET): $(BUILD_DIR)/app.o $(BUILD_DIR)/resource.o $(STATIC_TARGET)
+	$(CC) $(LDFLAGS) -o $@ $(INC_DIR) -mwindows $^ $(LIBS)
+	strip $(EXE_TARGET)
 	$(EXE_TARGET)
 
 $(BUILD_DIR)/app.o: app.cpp
@@ -40,9 +49,11 @@ $(BUILD_DIR)/resource.o: $(RES_DIR)/Project1.rc
 	windres -i $^ -o $@
 
 # 编译动态库
+$(SHARE_TARGET): share
 share:$(OBJECTS_CPP) $(OBJECTS_C)
 	$(CC) -fPIC -shared  $(LDFLAGS) -o $(SHARE_TARGET) $^ $(LIBS)
 # 编译静态库
+$(STATIC_TARGET): static
 static:$(OBJECTS_CPP) $(OBJECTS_C)
 	@$(AR) $(STATIC_TARGET) $^
 
@@ -67,4 +78,4 @@ rmtarget:
 
 # 清理
 clean:
-	-rm -rf $(TARGET_DIR) $(BUILD_DIR) $(BIN_DIR)
+	-rm -rf $(EXE_TARGET) $(BUILD_DIR)
